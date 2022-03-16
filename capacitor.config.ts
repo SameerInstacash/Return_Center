@@ -1,10 +1,17 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'RecentApp',
+  appId: 'com.getinstacash.returncenter',
+  appName: 'Return Center',
   webDir: 'www',
-  bundledWebRuntime: false
+  bundledWebRuntime: false,
+  
+  // "ios": {
+  //   "cordovaLinkerFlags": ["-ObjC"]
+  // }
+  
 };
+
+
 
 export default config;

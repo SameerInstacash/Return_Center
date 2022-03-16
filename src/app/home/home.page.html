@@ -1,20 +1,146 @@
-<ion-header [translucent]="true">
+
+<!-- <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>All Items</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+// List of Text Items
+<ion-list>
+  <div>
+  <ion-item *ngFor="let item of arrItems; let i = index" (click)='getStockOfSelectedItem(i)'>
+    <ion-label>{{item.locationName}}</ion-label>
+    <ion-label slot="end">{{item.count}}</ion-label>
+  </ion-item>
   </div>
+</ion-list>
+  
+</ion-content> -->
+
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{strCenterName}}</ion-title>
+    <ion-buttons slot="end" class="ion-margin-end">
+      
+      <ion-button (click)='refreshBtnClicked()'>
+        <ion-icon slot="icon-only" name="refresh" color="white"></ion-icon>
+      </ion-button>
+      
+      <ion-button id="trigger-button" (click)='logoutBtnClicked()'>
+        <ion-icon slot="icon-only" name="log-out" color="white"></ion-icon>
+      </ion-button>
+
+      <!-- <ion-modal trigger="trigger-button">
+        <ng-template>
+          <ion-content>Modal Content</ion-content>
+        </ng-template>
+      </ion-modal> -->
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-button expand="full" color="white" class="AdSearchBtn" (click)="advanceSearchBtnClicked()">
+    <ion-icon slot="start" name="search"></ion-icon>
+    {{LangDict.Advance_Search}}
+  </ion-button>
+
+  <div class="stockList">
+  <div class="stockSection" *ngFor="let item of arrItems; let i = index" (click)='getStockOfSelectedItem(i)'>
+    <div class="number" [ngClass]="{'grayBox' : i+1 == 4 , 'redBox' : i+1 > 4}">{{i+1}}</div>
+    <div class="stockDetails">
+      <!-- <div>{{item.locationName}}</div> -->
+      <div>{{LangDict[item.locationName]}}</div>
+      <div class="stockBox">{{item.count}}</div>
+    </div>
+  </div>
+  </div>
+
 </ion-content>
+
+
+
+
+<!-- <ion-content>
+
+  <ion-button expand="full" color="white" class="AdSearchBtn">
+    <ion-icon slot="start" name="search"></ion-icon>
+    Advance Search
+  </ion-button>
+
+  <div class="stockList" *ngFor="let item of arrItems; let i = index" (click)='getStockOfSelectedItem(i)'>
+
+    <div class="stockSection">
+      <div class="number">1</div>
+      <div class="stockDetails">
+        <div>Expected</div>
+        <div class="stockBox">738</div>
+      </div>
+    </div>
+
+    <div class="stockSection">
+      <div class="number">2</div>
+      <div class="stockDetails">
+        <div>Received (RC)</div>
+        <div class="stockBox">0</div>
+      </div>
+    </div>
+
+    <div class="stockSection">
+      <div class="number">3</div>
+      <div class="stockDetails">
+        <div>Transition IN</div>
+        <div class="stockBox">0</div>
+      </div>
+    </div>
+
+    <div class="stockSection">
+      <div class="number grayBox">4</div>
+      <div class="stockDetails">
+        <div>Stock</div>
+        <div class="stockBox">155</div>
+      </div>
+    </div>
+
+    <div class="stockSection">
+      <div class="number redBox">5</div>
+      <div class="stockDetails">
+        <div>Stock ATR</div>
+        <div class="stockBox">937</div>
+      </div>
+    </div>
+
+    <div class="stockSection">
+      <div class="number redBox">6</div>
+      <div class="stockDetails">
+        <div>Transition OUT</div>
+        <div class="stockBox">0</div>
+      </div>
+    </div>
+
+    <div class="stockSection">
+      <div class="number redBox">7</div>
+      <div class="stockDetails">
+        <div>Ready to Dispatch (DC)</div>
+        <div class="stockBox">0</div>
+      </div>
+    </div>
+
+    <div class="stockSection">
+      <div class="number redBox">8</div>
+      <div class="stockDetails">
+        <div>Dispatched</div>
+        <div class="stockBox">1121</div>
+      </div>
+    </div>
+
+  </div>
+</ion-content> -->
+

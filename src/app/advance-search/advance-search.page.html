@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" class="gray1"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="pL80">{{LangDict.Advance_Search}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="advanceSearch">
+  <div class="mX15Y10">
+    <ion-item class="searchByLocation">
+      <ion-list>
+        <ion-item>
+          <ion-label>{{LangDict.Search_by_location}}</ion-label>
+
+          <!-- <ion-select okText="Okay" cancelText="Dismiss"> -->
+
+          <ion-select [(ngModel)]="strSelectedLocation" (ionChange)="locationSelect();">
+            <div *ngFor="let loc of arrLocations">
+              <ion-select-option [value]="loc.locationName">{{LangDict[loc.locationName]}}</ion-select-option>
+            </div>
+
+
+            <!-- <ion-select-option value="location">Select Location</ion-select-option>
+              <ion-select-option value="brown">Brown</ion-select-option>
+              <ion-select-option value="blonde">Blonde</ion-select-option>
+              <ion-select-option value="black">Black</ion-select-option>
+              <ion-select-option value="red">Red</ion-select-option>-->
+
+          </ion-select>
+
+        </ion-item>
+        <ion-button color="secondary"  (click)="advanceSearchData('')">{{LangDict.Go}}</ion-button>
+      </ion-list>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">{{LangDict.Search_by_order_ID}}</ion-label>
+      <div class="searchById">
+        <ion-input [(ngModel)]="strOrderId"></ion-input>
+        <ion-button color="secondary" (click)="advanceSearchData('orderId')">{{LangDict.Go}}</ion-button>
+      </div>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">{{LangDict.Search_by_IMEI}}</ion-label>
+      <!-- <ion-input type="number" [(ngModel)]="strIMEI"></ion-input> -->
+      <div class="searchByIMEI">
+        <ion-input [(ngModel)]="strIMEI"></ion-input>
+        <ion-button color="secondary" (click)="advanceSearchData('IMEI')">{{LangDict.Go}}</ion-button>
+      </div>
+    </ion-item>
+
+    <div class="dateBox">
+      <ion-item>
+        <ion-label position="stacked">{{LangDict.From_date}}</ion-label>
+        <ion-input type="date" [(ngModel)]="strFromDate"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">{{LangDict.To_date}}</ion-label>
+        <ion-input type="date" [(ngModel)]="strToDate"></ion-input>
+      </ion-item>
+      <ion-button expand="block" color="secondary" (click)="advanceSearchData('date')">{{LangDict.Go}}</ion-button>
+    </div>
+
+
+  </div>
+
+
+  <!-- <ion-button (click)="advanceSearchData('date')">SEARCH</ion-button> -->
+  <!-- <ion-button (click)="advanceSearchData('IMEI')">SEARCH</ion-button> -->
+  <!-- <ion-button (click)="advanceSearchData('orderId')">SEARCH</ion-button> -->
+  <!-- <ion-button (click)="advanceSearchData()">SEARCH</ion-button> -->
+
+</ion-content>

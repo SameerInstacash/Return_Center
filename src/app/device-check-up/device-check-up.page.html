@@ -1,0 +1,160 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" class="gray1"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="pL80">{{LangDict.Device_CheckUp}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="questions">
+    <ion-card>
+      <div class="cardPhoneDetail">
+        <ion-card-header>
+          <ion-card-title>{{selCurrentDevice.productName}}</ion-card-title>
+          <ion-card-subtitle>{{selCurrentDevice.productIMEI}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p>{{selCurrentDevice.productOrderId}}</p>
+        </ion-card-content>
+      </div>
+      <div class="cardPhone">
+        <!-- <ion-img src="../assets/img/mobiles/1.jpg"></ion-img> -->
+        <ion-img [src]="selCurrentDevice.productImage"></ion-img>
+      </div>
+    </ion-card>
+
+    <!-- <ion-progress-bar color="secondary" value="0.1"></ion-progress-bar> -->
+    <ion-progress-bar color="secondary" value={{currentProgress}}></ion-progress-bar>
+
+  </div>
+
+
+  <ion-card class="questionCard">
+    <ion-card-content>
+      <ion-list>
+
+        <div *ngFor="let ques of question_data;  index as i ">
+
+          <!-- 1 radio -->
+          <div *ngIf="ques.viewType == 'radio' && itemIndex == i && ques.specificationName">
+            <ion-radio-group value="biff" (ionChange)="radioGroupChange($event, i, ques.specificationId)"
+              [value]="ques.checked">
+
+              <ion-list-header>
+                <ion-label>{{LangDict[ques.specificationName]}}</ion-label>
+              </ion-list-header>
+
+              <div class="questionInput">
+                <ion-item lines="none" *ngFor="let data of ques.specificationValue">
+                  <ion-label>{{LangDict[data.value]}}</ion-label>
+                  <ion-radio slot="start" [value]="data" (click)="radioClick(i)"></ion-radio>
+                </ion-item>
+              </div>
+            </ion-radio-group>
+          </div>
+
+          <!-- 2 select -->
+          <div *ngIf="ques.viewType == 'select' && itemIndex == i && ques.conditionSubHead">
+            <ion-radio-group (ionChange)="radioGroupChange($event, i, ques.conditionId)" [value]="ques.checked">
+
+              <ion-list-header>
+                <ion-label>{{LangDict[ques.conditionSubHead]}}</ion-label>
+              </ion-list-header>
+
+              <div class="questionInput">
+                <ion-item lines="none" *ngFor="let data of ques.conditionValue">
+                  <ion-label>{{LangDict[data.value]}}</ion-label>
+                  <ion-radio slot="start" [value]="data" (click)="radioClick(i)"></ion-radio>
+                </ion-item>
+              </div>
+            </ion-radio-group>
+          </div>
+
+          <!-- 3  -->
+          <div *ngIf="ques.viewType == 'radio' && itemIndex == i && ques.conditionSubHead">
+            <ion-radio-group (ionChange)="radioGroupChange($event, i, ques.conditionId)" [value]="ques.checked">
+
+              <ion-list-header>
+                <ion-label>{{LangDict[ques.conditionSubHead]}}</ion-label>
+              </ion-list-header>
+
+              <div class="questionInput">
+                <ion-item lines="none" *ngFor="let data of ques.conditionValue">
+                  <ion-label>{{LangDict[data.value]}}</ion-label>
+                  <ion-radio slot="start" [value]="data" (click)="radioClick(i)"></ion-radio>
+                </ion-item>
+              </div>
+            </ion-radio-group>
+          </div>
+
+          <!-- 4 checkbox -->
+          <div *ngIf="ques.viewType == 'checkbox' && itemIndex == i" value="ques.conditionId">
+            <ion-list-header>
+              <ion-label>{{LangDict[ques.conditionSubHead]}}</ion-label>
+            </ion-list-header>
+            <div class="questionOptions">
+              <ion-item lines="none" *ngFor="let data of ques.conditionValue">
+                <ion-label>{{LangDict[data.value]}}</ion-label>
+                <ion-checkbox color="secondary" [(ngModel)]="data.isCheck" slot="start" [value]="data.value"
+                  (ionChange)="addCheckbox($event,data,i)"></ion-checkbox>
+              </ion-item>
+            </div>
+          </div>
+
+
+        </div>
+
+      </ion-list>
+      <div class="questionBtns">
+        <ion-button size="small" (click)='backClick()' *ngIf="itemIndex > 0">{{LangDict.Back}}</ion-button>
+        <ion-button size="small" (click)='nextClick()' *ngIf="isNextShow">{{LangDict.Next}}</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+  <!-- <ion-card class="questionCard">  
+    <ion-card-content>
+      <ion-list>
+        <ion-radio-group value="biff">
+          
+          <ion-list-header>
+            <ion-label>Display and Touch Screen</ion-label>
+          </ion-list-header>
+
+          <div class="questionInput">
+
+            <ion-item>
+              <ion-radio class="flawless" slot="start" value="flawless"></ion-radio>
+              <ion-label><span>Flawless</span></ion-label>
+            </ion-item>
+        
+            <ion-item>
+              <ion-radio class="minorScratches" slot="start" value="minorScratches"></ion-radio>
+              <ion-label><span>2-3 Minor Scratches</span></ion-label>
+            </ion-item>
+        
+            <ion-item>
+              <ion-radio class="shadedWhiteDots" slot="start" value="shadedWhiteDots"></ion-radio>
+              <ion-label><span>Shaded/White Dots</span></ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-radio class="broken" slot="start" value="broken"></ion-radio>
+              <ion-label><span>Broken Dead Pixel Liquid Mark or Does not work properly</span></ion-label>
+            </ion-item>
+
+          </div>
+        </ion-radio-group>
+      </ion-list>
+    </ion-card-content>
+  </ion-card> -->
+
+</ion-content>

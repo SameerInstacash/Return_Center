@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" class="gray1"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="pL80">{{strCurrentLocation}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="expected">
+
+  <!-- List of Text Items -->
+<ion-list>
+
+  <!-- <div>
+  <ion-item *ngFor="let item of arrStock; let i = index" (click)='getDetailOfSelectedStockItem(i)'>
+    <ion-label>{{item.productName}}</ion-label>
+    <ion-label slot="end">{{item.productPrice}}</ion-label>
+  </ion-item>
+  </div> -->
+
+  <ion-card *ngFor="let item of arrStock; let i = index" (click)='getDetailOfSelectedStockItem(i)'>
+    <div class="cardPhoneDetail">
+      <ion-card-header>
+        <ion-card-title>{{item.productName}}</ion-card-title>
+        <ion-card-subtitle>{{item.productIMEI}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>{{item.productOrderId}}</p>
+        <p class="price"><i class="fa fa-rupee"></i> {{item.productPrice}}</p>
+      </ion-card-content>
+    </div>
+    <div class="cardPhone">
+      <!-- <ion-img src="../assets/img/mobiles/2.png"></ion-img> -->
+      <ion-img [src]="item.productImage"></ion-img>
+    </div>
+  </ion-card>
+
+
+</ion-list>
+
+  
+  
+
+  <!-- <ion-card>
+    <div class="cardPhoneDetail">
+      <ion-card-header>
+        <ion-card-title>Samsung Galaxy S20 Ultra 5G</ion-card-title>
+        <ion-card-subtitle>111238113042853</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>ZWJA294991</p>
+        <p class="price"><i class="fa fa-rupee"></i> 1,320</p>
+      </ion-card-content>
+    </div>
+    <div class="cardPhone">
+      <ion-img src="../assets/img/mobiles/1.jpg"></ion-img>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <div class="cardPhoneDetail">
+      <ion-card-header>
+        <ion-card-title>Samsung Galaxy Grand Neo Plus</ion-card-title>
+        <ion-card-subtitle>111238113042853</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>ZWJA294991</p>
+        <p class="price"><i class="fa fa-rupee"></i> 2,120</p>
+      </ion-card-content>
+    </div>
+    <div class="cardPhone">
+      <ion-img src="../assets/img/mobiles/2.png"></ion-img>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <div class="cardPhoneDetail">
+      <ion-card-header>
+        <ion-card-title>Apple iPhone 12 mini</ion-card-title>
+        <ion-card-subtitle>111238113042853</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>ZWJA294991</p>
+        <p class="price"><i class="fa fa-rupee"></i> 12,120</p>
+      </ion-card-content>
+    </div>
+    <div class="cardPhone">
+      <ion-img src="../assets/img/mobiles/3.jpg"></ion-img>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <div class="cardPhoneDetail">
+      <ion-card-header>
+        <ion-card-title>Apple iPhone 12</ion-card-title>
+        <ion-card-subtitle>111238113042853</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>ZWJA294991</p>
+        <p class="price"><i class="fa fa-rupee"></i> 12,120</p>
+      </ion-card-content>
+    </div>
+    <div class="cardPhone">
+      <ion-img src="../assets/img/mobiles/4.jpeg"></ion-img>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <div class="cardPhoneDetail">
+      <ion-card-header>
+        <ion-card-title>Apple iPhone 5s</ion-card-title>
+        <ion-card-subtitle>111238113042853</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>ZWJA294991</p>
+        <p class="price"><i class="fa fa-rupee"></i> 12,120</p>
+      </ion-card-content>
+    </div>
+    <div class="cardPhone">
+      <ion-img src="../assets/img/mobiles/5.jpg"></ion-img>
+    </div>
+  </ion-card> -->
+
+  
+</ion-content>

@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start">
+      <ion-back-button defaultHref="" class="gray1"></ion-back-button>
+    </ion-buttons> -->
+    <ion-title class="pL80">{{LangDict.Device_CheckUp}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="questions">
+    <ion-card>
+      <div class="cardPhoneDetail">
+        <ion-card-header>
+          <ion-card-title>{{currentDevice.productName}}</ion-card-title>
+          <ion-card-subtitle>{{currentDevice.productIMEI}}</ion-card-subtitle>
+        </ion-card-header>
+  
+        <ion-card-content>
+          <p>{{currentDevice.productOrderId}}</p>
+        </ion-card-content>
+      </div>
+      <div class="cardPhone">
+        <!-- <ion-img src="../assets/img/mobiles/1.jpg"></ion-img> -->
+        <ion-img [src]="currentDevice.productImage"></ion-img>
+      </div>
+    </ion-card>
+    <ion-progress-bar color="secondary" value="1"></ion-progress-bar>
+  </div>
+
+  <ion-card class="questionConditions">
+
+    <ion-card-header class="ion-text-center">
+      <ion-label>{{LangDict.Conditional_Mismatch_Found}}</ion-label>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-grid *ngFor="let item of mismatchData; index as i">
+
+        <div *ngIf="(i%2) == 0">
+        <ion-row [class]="item.old_ans === item.new_ans ? 'conSame' : 'mismatch'">
+          
+          <!-- <ion-col size="5">{{item.question}}</ion-col> -->
+          <ion-col size="5">{{LangDict[item.question]}}</ion-col>
+          
+          <!-- <ion-col>{{item.old_ans}}</ion-col>  
+          <ion-col>{{item.new_ans}}</ion-col> -->
+          <ion-col>{{LangDict[item.old_ans]}}</ion-col>  
+          <ion-col>{{LangDict[item.new_ans]}}</ion-col>
+          
+        </ion-row>
+        </div>
+
+        <div *ngIf="(i%2) != 0">
+          <ion-row [class]="item.old_ans === item.new_ans ? 'conSame' : 'mismatch'">
+            
+            <!-- <ion-col size="5">{{item.question}}</ion-col> -->
+            <ion-col size="5">{{LangDict[item.question]}}</ion-col>
+            
+            <!-- <ion-col>{{item.old_ans}}</ion-col>
+            <ion-col>{{item.new_ans}}</ion-col> -->
+            <ion-col>{{LangDict[item.old_ans]}}</ion-col>
+            <ion-col>{{LangDict[item.new_ans]}}</ion-col>
+            
+          </ion-row>
+        </div>
+        
+      </ion-grid>
+        
+
+          
+      <!-- <ion-grid>   
+
+        <ion-row>
+          <ion-col size="5">Display and Touch Screen</ion-col>
+          <ion-col>Flawless</ion-col>
+          <ion-col>Flawless</ion-col>
+        </ion-row>
+
+        <ion-row class="mismatch">
+          <ion-col size="5">Select the avaliable accessories</ion-col>
+          <ion-col></ion-col>
+          <ion-col>Earphone</ion-col>
+        </ion-row>
+
+        <ion-row class="conSame">
+          <ion-col size="5">OEM / Brand Warranty Utilized</ion-col>
+          <ion-col>Not avaliable</ion-col>
+          <ion-col>Not avaliable</ion-col>
+        </ion-row>
+
+        <ion-row class="mismatch">
+          <ion-col size="5">Device Body (Back panel Cover)</ion-col>
+          <ion-col>Scratched</ion-col>
+          <ion-col>Cracked</ion-col>
+        </ion-row>
+
+        <ion-row class="mismatch">
+          <ion-col size="5">Hardware Buttons or Keys</ion-col>
+          <ion-col>Okay</ion-col>
+          <ion-col>Missing</ion-col>
+        </ion-row>
+
+        <ion-row class="mismatch">
+          <ion-col size="5">Silver Frame / Bezel; (Around Screen)</ion-col>
+          <ion-col>Discolored</ion-col>
+          <ion-col>Dented</ion-col>
+        </ion-row>
+
+        <ion-row class="mismatch">
+          <ion-col size="5">Main Camera (Camera Glass)</ion-col>
+          <ion-col>Flawless</ion-col>
+          <ion-col>Blur</ion-col>
+        </ion-row> 
+
+      </ion-grid> -->
+
+
+
+      <div class="ion-padding-top">
+        <ion-button expand="block" (click)="ConfirmMismatchClicked()">{{LangDict.Confirm_Mismatch}}</ion-button>
+        <ion-button expand="block" color="medium" (click)="DismissClicked()">{{LangDict.Dismiss}}</ion-button>
+      </div>
+      
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

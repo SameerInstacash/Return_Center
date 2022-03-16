@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" class="gray1"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="pL80">{{LangDict.Product_Info}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="productInfo">
+  <ion-card>
+    <div class="productImage">
+      <!-- <ion-img src="../assets/img/mobiles/2.png"></ion-img> -->
+      <ion-img [src]="currentDevice.productImage"></ion-img>
+    </div>
+    <div class="productDetail">
+      <ion-card-header>
+        <ion-card-title>{{currentDevice.productName}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div>
+          <p>{{currentDevice.productIMEI}}</p>
+          <p>{{currentDevice.productOrderId}}</p>
+        </div>
+        <div>
+          <p class="price"><i class="fa fa-rupee"></i> {{currentDevice.productPrice}}</p>
+        </div>
+      </ion-card-content>
+      <div class="OrderDetail">
+        <ul>
+          <li>
+            <ul>
+              <li>{{LangDict.Order_Id_}}</li>
+              <li>{{currentDevice.productOrderId}}</li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <li>{{LangDict.Center_Name_}}</li>
+              <li>{{strCenterName}}</li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <li>{{LangDict.Created_Date_}}</li>
+              <li>{{currentDevice.createdDate}}</li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <li>{{LangDict.Current_Location_}}</li>
+              <li>{{LangDict[strLocation]}}</li>
+            </ul>
+          </li>
+          <li>
+            <ul>
+              <li>{{LangDict.Current_Status_}}</li>
+              <li class="statusVerified">{{currentDevice.status}}</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </ion-card>
+
+  <div *ngIf="strLocationID == '1'">
+  <ion-card class="productAction">
+
+    <ion-card-header (click)="takeActionBtnClicked()">
+      <ion-card-title>{{LangDict.Take_an_action}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content (click)="checkDeviceBtnClicked()">
+      <!-- <ion-button href="#"> -->
+        <ion-icon slot="icon-only" name="phone-portrait-outline"></ion-icon> {{LangDict.Check_Device}}
+      <!-- </ion-button> -->
+    </ion-card-content>
+
+  </ion-card>
+  </div>
+
+</ion-content>

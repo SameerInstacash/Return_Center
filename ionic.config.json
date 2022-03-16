@@ -1,7 +1,12 @@
 {
-  "name": "RecentApp",
+  "name": "Return Center",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {
+      
+    }
   },
   "type": "angular"
 }

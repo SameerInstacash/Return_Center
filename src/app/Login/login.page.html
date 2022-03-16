@@ -1,0 +1,53 @@
+<ion-content class="loginPage">
+  <ion-header class="loginHead ion-no-border">
+    <ion-toolbar>
+      <ion-img src='../assets/img/squareLogo-white.png'></ion-img>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="loginCard">
+    <!-- Country with language -->
+    <ion-list class="countrylanguage">
+      <ion-item lines="none">
+        <div class="countrySelect" *ngIf="myCountry">
+          <!-- <ion-label>IN</ion-label>
+          <ion-img src="../assets/img/india.png" (click)="countryTap()"></ion-img> -->
+          <ion-label>{{myCountry.country}}</ion-label>
+          <ion-img [src]="myCountry.logo_select" (click)="selectCountry()"></ion-img>
+        </div>
+        <div class="languageSelect" *ngIf="myLang">
+          <!-- <ion-label>EN</ion-label> -->
+          <ion-label>{{myLang.lang_symbole}}</ion-label>
+          <ion-thumbnail>
+            <ion-icon name="language-outline" (click)="selectLang()"></ion-icon>
+          </ion-thumbnail>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <!-- Login form -->
+    <form class="loginForm">
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
+        <ion-item>
+          <ion-label position="floating" autofocus="autofocus" required="required">{{LangDict.User_ID}}</ion-label>
+          <ion-input type="text" name="userId" [(ngModel)]="strUserId"></ion-input>
+          <ion-icon class="ion-no-margin" name="person" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating" required="required">{{LangDict.Password}}</ion-label>
+          <ion-input type="Password" name="password" [(ngModel)]="strPassword"></ion-input>
+          <ion-icon class="ion-no-margin" name="eye-off" slot="end"></ion-icon>
+          <!-- <ion-icon class="ion-no-margin showPassword" name="eye" slot="end"></ion-icon> -->
+        </ion-item>
+        <!-- <div class="text-right loginForget"><a href="#">Forgot ?</a></div> -->
+      </ion-list>
+
+      <div class="pt-22 text-center">
+        <ion-button type="submit" class="ion-no-margin" (click)="logInButtonClicked()">{{LangDict.Sign_in}}</ion-button>
+      </div>
+      <ion-title size="small" class="text-center ion-padding">{{LangDict.or}}</ion-title>
+      <ion-title size="small" class="text-center ion-no-padding" (click)="navOtpLogin()"><a class="black">{{LangDict.Login_with_OTP}}</a></ion-title>
+      <!-- <ion-title size="small" class="text-center ion-no-padding" (click)="navOtpLogin()"><a class="black">{{globalObject.first}}</a></ion-title> -->
+    </form>
+  </div>
+</ion-content>
