@@ -16,6 +16,7 @@ export class ExpectedPage implements OnInit {
 
   public LangDict : any = {};
 
+  public arrFilteredStock : any[];
   public arrStock : any[];
   public selectedLocationId : any;
   public strCurrentLocation : string;
@@ -66,6 +67,26 @@ export class ExpectedPage implements OnInit {
 
   }
 
+  search(query) {
+    if (!query) { // revert back to the original array if no query
+      this.arrStock = this.arrFilteredStock;
+    } else { // filter array by query
+
+      /*
+      this.arrStock = this.arrFilteredStock.filter((user) => {
+        return (user.productName.toLowerCase.includes(query.toLowerCase) || 
+                user.productIMEI.toLowerCase.includes(query.toLowerCase) || 
+                user.productOrderId.toLowerCase.includes(query.toLowerCase)
+               );
+      })*/
+
+      this.arrStock = this.arrFilteredStock.filter((user) => {
+        return user.productName.toLowerCase().indexOf(query.toLowerCase()) > -1;
+      });
+
+    }
+  }
+
 
   getStockItemsOnStockPage() {
 
@@ -90,6 +111,7 @@ export class ExpectedPage implements OnInit {
         
         //console.log(JSON.parse(responseData['data']));
         this.arrStock = JSON.parse(responseData['data']).msg;
+        this.arrFilteredStock = this.arrStock
 
       }else {
         debugger
